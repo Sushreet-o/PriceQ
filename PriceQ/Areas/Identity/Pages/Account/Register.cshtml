@@ -1,0 +1,408 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Create Account";
+}
+
+<div class="priceq-register-page">
+
+    <div class="priceq-register-container">
+
+        <!-- LEFT SIDE -->
+        <div class="priceq-register-brand">
+
+            <div class="priceq-brand-content">
+
+                <a asp-controller="Home" asp-action="Index" class="priceq-logo">
+                    Price<span>Q</span>
+                </a>
+
+                <div class="brand-main-content">
+
+                    <div class="brand-icon">
+                        <i class="bi bi-tags-fill"></i>
+                    </div>
+
+                    <h1>Find the best price.<br />Every time.</h1>
+
+                    <p>
+                        Compare products from multiple stores and
+                        discover where you can get the best deal.
+                    </p>
+
+                    <div class="brand-features">
+
+                        <div class="brand-feature">
+                            <div class="feature-icon">
+                                <i class="bi bi-search"></i>
+                            </div>
+                            <div>
+                                <strong>Compare prices</strong>
+                                <span>Search multiple stores at once</span>
+                            </div>
+                        </div>
+
+                        <div class="brand-feature">
+                            <div class="feature-icon">
+                                <i class="bi bi-graph-down-arrow"></i>
+                            </div>
+                            <div>
+                                <strong>Find better deals</strong>
+                                <span>See prices from cheapest to expensive</span>
+                            </div>
+                        </div>
+
+                        <div class="brand-feature">
+                            <div class="feature-icon">
+                                <i class="bi bi-bell"></i>
+                            </div>
+                            <div>
+                                <strong>Track prices</strong>
+                                <span>Get notified when prices drop</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="brand-footer">
+                    © @DateTime.Now.Year PriceQ. All rights reserved.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+        <div class="priceq-register-form-section">
+
+            <div class="priceq-register-form-container">
+
+                <div class="mobile-logo">
+                    <a asp-controller="Home" asp-action="Index" class="priceq-logo">
+                        Price<span>Q</span>
+                    </a>
+                </div>
+
+                <div class="register-heading">
+
+                    <h2>Create your account</h2>
+
+                    <p>
+                        Join PriceQ and start finding better prices.
+                    </p>
+
+                </div>
+
+
+                <!-- Validation Summary -->
+
+                <div asp-validation-summary="ModelOnly"
+                     class="priceq-validation-summary"
+                     role="alert">
+                </div>
+
+
+                <form id="registerForm"
+                      asp-route-returnUrl="@Model.ReturnUrl"
+                      method="post"
+                      class="priceq-register-form">
+
+
+                    <!-- FIRST NAME + LAST NAME -->
+
+                    <div class="name-row">
+
+                        <div class="priceq-form-group">
+
+                            <label asp-for="Input.FirstName">
+                                First name
+                            </label>
+
+                            <div class="priceq-input-wrapper">
+
+                                <i class="bi bi-person"></i>
+
+                                <input asp-for="Input.FirstName"
+                                       class="priceq-input"
+                                       autocomplete="given-name"
+                                       placeholder="Enter your first name"
+                                       aria-required="true" />
+
+                            </div>
+
+                            <span asp-validation-for="Input.FirstName"
+                                  class="priceq-validation">
+                            </span>
+
+                        </div>
+
+
+                        <div class="priceq-form-group">
+
+                            <label asp-for="Input.LastName">
+                                Last name
+                            </label>
+
+                            <div class="priceq-input-wrapper">
+
+                                <i class="bi bi-person"></i>
+
+                                <input asp-for="Input.LastName"
+                                       class="priceq-input"
+                                       autocomplete="family-name"
+                                       placeholder="Enter your last name"
+                                       aria-required="true" />
+
+                            </div>
+
+                            <span asp-validation-for="Input.LastName"
+                                  class="priceq-validation">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="priceq-form-group">
+
+                        <label asp-for="Input.Email">
+                            Email address
+                        </label>
+
+                        <div class="priceq-input-wrapper">
+
+                            <i class="bi bi-envelope"></i>
+
+                            <input asp-for="Input.Email"
+                                   class="priceq-input"
+                                   autocomplete="username"
+                                   placeholder="you@example.com"
+                                   aria-required="true" />
+
+                        </div>
+
+                        <span asp-validation-for="Input.Email"
+                              class="priceq-validation">
+                        </span>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="priceq-form-group">
+
+                        <label asp-for="Input.Password">
+                            Password
+                        </label>
+
+                        <div class="priceq-input-wrapper">
+
+                            <i class="bi bi-lock"></i>
+
+                            <input asp-for="Input.Password"
+                                   id="registerPassword"
+                                   class="priceq-input password-input"
+                                   autocomplete="new-password"
+                                   placeholder="Create a password"
+                                   aria-required="true" />
+
+                            <button type="button"
+                                    class="password-toggle"
+                                    onclick="togglePassword('registerPassword', 'passwordEye')"
+                                    aria-label="Show password">
+
+                                <i id="passwordEye"
+                                       class="fa-solid fa-eye">
+                                </i>
+
+                            </button>
+
+                        </div>
+
+                        <div class="password-hint">
+                            <i class="bi bi-shield-check"></i>
+                            At least 6 characters
+                        </div>
+
+                        <span asp-validation-for="Input.Password"
+                              class="priceq-validation">
+                        </span>
+
+                    </div>
+
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="priceq-form-group">
+
+                        <label asp-for="Input.ConfirmPassword">
+                            Confirm password
+                        </label>
+
+                        <div class="priceq-input-wrapper">
+
+                            <i class="bi bi-lock-fill"></i>
+
+                            <input asp-for="Input.ConfirmPassword"
+                                   id="confirmPassword"
+                                   class="priceq-input password-input"
+                                   autocomplete="new-password"
+                                   placeholder="Re-enter your password"
+                                   aria-required="true" />
+
+                            <button type="button"
+                                    class="password-toggle"
+                                    onclick="togglePassword('confirmPassword', 'confirmPasswordEye')"
+                                    aria-label="Show password">
+
+                                <i id="confirmPasswordEye"
+                                       class="fa-solid fa-eye">
+                                </i>
+
+                            </button>
+
+                        </div>
+
+                        <span asp-validation-for="Input.ConfirmPassword"
+                              class="priceq-validation">
+                        </span>
+
+                    </div>
+
+
+                    <!-- TERMS -->
+
+                    <div class="priceq-terms">
+
+                        <i class="bi bi-info-circle"></i>
+
+                        <span>
+                            By creating an account, you agree to use PriceQ
+                            responsibly and accept our terms and privacy policy.
+                        </span>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <button id="registerSubmit"
+                            type="submit"
+                            class="priceq-register-button">
+
+                        <span>Create Account</span>
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </button>
+
+
+                    <!-- LOGIN -->
+
+                    <div class="login-link">
+
+                        <span>Already have an account?</span>
+
+                        <a asp-page="./Login"
+                           asp-route-returnUrl="@Model.ReturnUrl">
+                            Log in
+                        </a>
+
+                    </div>
+
+                </form>
+
+
+                <!-- EXTERNAL LOGIN -->
+
+                @if ((Model.ExternalLogins?.Count ?? 0) > 0)
+                {
+                    <div class="external-login-section">
+
+                        <div class="divider">
+                            <span>or continue with</span>
+                        </div>
+
+                        <form id="external-account"
+                              asp-page="./ExternalLogin"
+                              asp-route-returnUrl="@Model.ReturnUrl"
+                              method="post">
+
+                            <div class="external-buttons">
+
+                                @foreach (var provider in Model.ExternalLogins!)
+                                {
+                                    <button type="submit"
+                                            class="external-login-button"
+                                            name="provider"
+                                            value="@provider.Name">
+
+                                        @if (provider.Name == "Google")
+                                        {
+                                            <i class="bi bi-google"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="bi bi-box-arrow-in-right"></i>
+                                        }
+
+                                        <span>
+                                            Continue with @provider.DisplayName
+                                        </span>
+
+                                    </button>
+                                }
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+                function togglePassword(inputId, iconId) {
+
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+
+            } else {
+
+                input.type = "password";
+
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+
+            }
+        }
+
+    </script>
+}

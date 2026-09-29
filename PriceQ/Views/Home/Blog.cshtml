@@ -1,0 +1,29 @@
+﻿@model IEnumerable<PriceQ.Models.BlogPost>
+
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">PriceQ <span class="text-primary">Blog</span></h1>
+        <p class="text-muted">Expert advice, buying guides, and the latest price trends in Nepal.</p>
+    </div>
+
+    <div class="row">
+        @foreach (var post in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm" style="border-radius: 15px; overflow: hidden;">
+                    <img src="@post.ImageUrl" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                    <div class="card-body p-4">
+                        <span class="badge mb-2" style="background-color: #e9ddff; color: #5533ff;">@post.Category</span>
+                        <h5 class="card-title fw-bold">@post.Title</h5>
+                        <p class="card-text text-muted small">@post.Excerpt</p>
+                        <hr class="my-3 opacity-25">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted small"><i class="far fa-calendar-alt me-1"></i> @post.Date</span>
+                            <a href="#" class="btn btn-sm btn-outline-primary" style="border-radius: 8px;">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

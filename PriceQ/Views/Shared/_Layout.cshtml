@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PriceQ Nepal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PriceQ_Nepal.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom fixed-top">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="/images/logos/priceq_logo_main.png" alt="PriceQ Logo" style="height: 40px; width: auto;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 justify-content-center">
+                        <li class="nav-item dropdown-hover" style="position: relative;">
+                            <a class="nav-link text-dark fw-bold" href="#" style="font-size: 0.9rem;">
+                                Category <i class="fas fa-chevron-down ms-1" style="font-size: 0.7rem;"></i>
+                            </a>
+                            <div class="category-popup">
+                                <a href="#" class="cat-item">Electronics</a>
+                                <a href="#" class="cat-item">Accessories</a>
+                                <a href="#" class="cat-item">Fashion</a>
+                                <a href="#" class="cat-item">Footwear</a>
+                                <a href="#" class="cat-item">Home & Living</a>
+                                <a href="#" class="cat-item">Sports</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Stores">Stores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Deals" style="font-size: 0.9rem; font-weight: 500;">Deals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Alerts">Price Alerts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Blog">Blog</a>
+                        </li>
+                    </ul>
+
+                    <div class="d-flex align-items-center gap-2">
+                        <a class="nav-link text-dark me-2" asp-controller="Home" asp-action="Saved" style="font-size: 0.9rem; font-weight: 500;">
+                            <i class="far fa-heart me-1"></i> Saved
+                        </a>
+                        <div style="border-left: 1px solid #ddd; height: 20px; margin: 0 10px;"></div>
+                        
+                        @* This handles the dynamic Login/Logout/Register buttons *@
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-body" style="padding-top: 70px;">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted bg-white py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4 class="fw-bold text-dark">Price<span style="color:#5533ff;">Q</span></h4>
+                    <p class="small">The smartest way to shop in Nepal. Compare prices and save money.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="mb-0 small">&copy; 2026 PriceQ Nepal. All rights reserved.</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <div class="d-flex justify-content-md-end gap-3 mt-2">
+                        <a href="#" class="text-muted"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

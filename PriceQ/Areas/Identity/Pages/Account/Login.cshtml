@@ -1,0 +1,380 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="priceq-login-page">
+
+    <div class="priceq-login-container">
+
+        <!-- LEFT SIDE -->
+        <div class="priceq-login-brand">
+
+            <div class="priceq-login-brand-content">
+
+                <a asp-controller="Home"
+                       asp-action="Index"
+                       class="priceq-login-logo">
+                    Price<span>Q</span>
+                </a>
+
+                <div class="login-brand-main">
+
+                    <div class="login-brand-icon">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                    </div>
+
+                    <h1>
+                        Welcome<br />
+                        back.
+                    </h1>
+
+                    <p>
+                        Sign in to your PriceQ account and
+                        continue finding the best prices.
+                    </p>
+
+
+                    <div class="login-brand-features">
+
+                        <div class="login-brand-feature">
+
+                            <div class="login-feature-icon">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+
+                            <div>
+                                <strong>Compare prices</strong>
+                                <span>Search multiple stores at once</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="login-brand-feature">
+
+                            <div class="login-feature-icon">
+                                <i class="fa-solid fa-tags"></i>
+                            </div>
+
+                            <div>
+                                <strong>Find better deals</strong>
+                                <span>Discover cheaper products easily</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="login-brand-feature">
+
+                            <div class="login-feature-icon">
+                                <i class="fa-solid fa-bell"></i>
+                            </div>
+
+                            <div>
+                                <strong>Track prices</strong>
+                                <span>Keep an eye on products you want</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="login-brand-footer">
+                    © @DateTime.Now.Year PriceQ. All rights reserved.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+        <div class="priceq-login-form-section">
+
+            <div class="priceq-login-form-container">
+
+
+                <!-- MOBILE LOGO -->
+
+                <div class="login-mobile-logo">
+
+                    <a asp-controller="Home"
+                           asp-action="Index"
+                           class="priceq-login-logo">
+                        Price<span>Q</span>
+                    </a>
+
+                </div>
+
+
+                <!-- HEADING -->
+
+                <div class="login-heading">
+
+                    <h2>Welcome back</h2>
+
+                    <p>
+                        Sign in to your PriceQ account.
+                    </p>
+
+                </div>
+
+
+                <!-- VALIDATION -->
+
+                <div asp-validation-summary="ModelOnly"
+                     class="priceq-login-validation-summary"
+                     role="alert">
+                </div>
+
+
+                <!-- LOGIN FORM -->
+
+                <form id="account"
+                      method="post"
+                      asp-route-returnUrl="@Model.ReturnUrl"
+                      class="priceq-login-form">
+
+
+                    <!-- EMAIL -->
+
+                    <div class="priceq-login-form-group">
+
+                        <label asp-for="Input.Email">
+                            Email address
+                        </label>
+
+                        <div class="priceq-login-input-wrapper">
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            <input asp-for="Input.Email"
+                                   class="priceq-login-input"
+                                   autocomplete="username"
+                                   aria-required="true"
+                                   placeholder="you@example.com" />
+
+                        </div>
+
+                        <span asp-validation-for="Input.Email"
+                              class="priceq-login-validation">
+                        </span>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="priceq-login-form-group">
+
+                        <div class="password-label-row">
+
+                            <label asp-for="Input.Password">
+                                Password
+                            </label>
+
+                            <a id="forgot-password"
+                                   asp-page="./ForgotPassword">
+                                Forgot password?
+                            </a>
+
+                        </div>
+
+
+                        <div class="priceq-login-input-wrapper">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input asp-for="Input.Password"
+                                   id="loginPassword"
+                                   class="priceq-login-input login-password-input"
+                                   autocomplete="current-password"
+                                   aria-required="true"
+                                   placeholder="Enter your password" />
+
+                            <button type="button"
+                                    class="login-password-toggle"
+                                    onclick="toggleLoginPassword()"
+                                    aria-label="Show password">
+
+                                <i id="loginPasswordEye"
+                                       class="fa-solid fa-eye">
+                                </i>
+
+                            </button>
+
+                        </div>
+
+                        <span asp-validation-for="Input.Password"
+                              class="priceq-login-validation">
+                        </span>
+
+                    </div>
+
+
+                    <!-- REMEMBER ME -->
+
+                    <div class="priceq-remember-row">
+
+                        <label class="priceq-remember-label">
+
+                            <input asp-for="Input.RememberMe"
+                                   class="priceq-remember-checkbox" />
+
+                            <span class="custom-checkbox"></span>
+
+                            <span>
+                                Remember me
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- LOGIN BUTTON -->
+
+                    <button id="login-submit"
+                            type="submit"
+                            class="priceq-login-button">
+
+                        <span>Sign In</span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+
+                    <!-- REGISTER -->
+
+                    <div class="priceq-create-account">
+
+                        <span>
+                            Don't have an account?
+                        </span>
+
+                        <a asp-page="./Register"
+                               asp-route-returnUrl="@Model.ReturnUrl">
+                            Create account
+                        </a>
+
+                    </div>
+
+
+                    <!-- RESEND CONFIRMATION -->
+
+                    <div class="priceq-resend-confirmation">
+
+                        <a id="resend-confirmation"
+                               asp-page="./ResendEmailConfirmation">
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            Resend email confirmation
+
+                        </a>
+
+                    </div>
+
+                </form>
+
+
+                <!-- EXTERNAL LOGIN -->
+                @if ((Model.ExternalLogins?.Count ?? 0) > 0)
+                {
+                    <div class="priceq-external-login">
+
+                        <div class="priceq-login-divider">
+
+                            <span>or continue with</span>
+
+                        </div>
+
+
+                        <form id="external-account"
+                              asp-page="./ExternalLogin"
+                              asp-route-returnUrl="@Model.ReturnUrl"
+                              method="post">
+
+                            <div class="priceq-external-buttons">
+
+                                @foreach (var provider in Model.ExternalLogins!)
+                                {
+                                    <button type="submit"
+                                            class="priceq-external-button"
+                                            name="provider"
+                                            value="@provider.Name"
+                                            title="Log in using your @provider.DisplayName account">
+
+                                        @if (provider.Name == "Google")
+                                        {
+                                            <i class="fa-brands fa-google"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                                        }
+
+                                        <span>
+                                            Continue with @provider.DisplayName
+                                        </span>
+
+                                    </button>
+                                }
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        function toggleLoginPassword() {
+
+            const input = document.getElementById("loginPassword");
+            const icon = document.getElementById("loginPasswordEye");
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+
+            }
+            else {
+
+                input.type = "password";
+
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+
+            }
+
+        }
+
+    </script>
+
+}

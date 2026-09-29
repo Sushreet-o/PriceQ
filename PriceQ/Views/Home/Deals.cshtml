@@ -1,0 +1,69 @@
+﻿@model IEnumerable<PriceQ.Models.Product>
+
+<div class="container mt-4">
+    <!-- BANNER SECTION -->
+    <div class="deals-banner p-5 mb-4 d-flex justify-content-between align-items-center" style="background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); border-radius: 20px; position: relative; overflow: hidden;">
+        <div class="banner-text">
+            <h1 class="fw-bold">Top Deals, <span style="color: #5533ff;">Every Day.</span></h1>
+            <p class="text-muted">Discover the best offers from trusted stores in Nepal. Limited time deals on<br>electronics, fashion, home & more.</p>
+        </div>
+        <div class="banner-img">
+            <img src="/images/deals_illustration.png.png" style="width: 250px;"> <!-- Replace with your shopping bag image -->
+        </div>
+    </div>
+
+    <!-- CATEGORY FILTER BUTTONS -->
+    <div class="d-flex gap-2 mb-4 overflow-auto pb-2 no-scrollbar">
+        <button class="btn btn-dark px-4 rounded-pill">All Deals</button>
+        <button class="btn btn-outline-secondary px-4 rounded-pill border-light-subtle bg-white text-dark shadow-sm">Electronics</button>
+        <button class="btn btn-outline-secondary px-4 rounded-pill border-light-subtle bg-white text-dark shadow-sm">Fashion</button>
+        <button class="btn btn-outline-secondary px-4 rounded-pill border-light-subtle bg-white text-dark shadow-sm">Footwear</button>
+        <button class="btn btn-outline-secondary px-4 rounded-pill border-light-subtle bg-white text-dark shadow-sm">Home & Living</button>
+        <button class="btn btn-outline-secondary px-4 rounded-pill border-light-subtle bg-white text-dark shadow-sm">Beauty</button>
+        <button class="btn btn-outline-secondary px-4 rounded-pill border-light-subtle bg-white text-dark shadow-sm">Accessories</button>
+    </div>
+
+    <!-- SORT INFO -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <span class="text-muted small">Showing 1-@Model.Count() of 320 deals</span>
+        <div class="dropdown">
+            <button class="btn btn-light btn-sm border rounded px-3" type="button">Sort by: <b>Most Popular</b> <i class="fas fa-chevron-down ms-1"></i></button>
+        </div>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm p-3" style="border-radius: 15px; position: relative;">
+                    <!-- Discount Badge -->
+                    <span class="badge position-absolute" style="top: 15px; left: 15px; background: #f0f0ff; color: #5533ff; font-weight: 500;">@item.Discount</span>
+                    <i class="far fa-heart position-absolute text-muted" style="top: 20px; right: 20px; cursor: pointer;"></i>
+
+                    <div class="text-center py-3">
+                        <img src="@item.ImageUrl" class="img-fluid" style="height: 140px; object-fit: contain;">
+                    </div>
+
+                    <div class="card-body p-0 mt-2">
+                        <h6 class="fw-bold mb-0">@item.Name</h6>
+                        <p class="text-muted small mb-2">@item.Category</p>
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <span class="fw-bold" style="color: #5533ff;">@item.CurrentPrice</span>
+                            <span class="text-muted small text-decoration-line-through">@item.PreviousPrice</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="@item.StoreLogoUrl" style="width: 16px; height: 16px; object-fit: contain;">
+                            <span class="small text-muted">@item.StoreName</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- LOAD MORE -->
+    <div class="text-center mt-5 mb-5">
+        <button class="btn btn-outline-primary px-5 py-2 rounded-pill fw-bold" style="border-color: #e9ddff; color: #5533ff;">Load More Deals <i class="fas fa-chevron-down ms-2"></i></button>
+    </div>
+</div>

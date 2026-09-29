@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PriceQ.Models.Store>
+
+@{
+    ViewData["Title"] = "All Stores - PriceQ";
+}
+
+<div class="container mt-5">
+    <div class="stores-header mb-5">
+        <h1 class="fw-bold">All Stores</h1>
+        <p class="text-muted">Shop from Nepal's most trusted online stores</p>
+    </div>
+
+    <div class="stores-list">
+        @foreach (var store in Model)
+        {
+            <div class="store-row-card d-flex align-items-center justify-content-between p-4 mb-3 shadow-sm bg-white" style="border-radius: 15px; border: 1px solid #f0f0f0;">
+                <div class="d-flex align-items-center">
+                    <div class="store-logo-wrap me-4" style="width: 80px; text-align: center;">
+                        <img src="@store.LogoUrl" alt="@store.Name" style="max-width: 100%; max-height: 50px; object-fit: contain;">
+                    </div>
+                    
+                    <div class="store-info">
+                        <h4 class="fw-bold mb-1">@store.Name</h4>
+                        <p class="text-muted mb-1" style="font-size: 0.9rem;">@store.Description</p>
+                        <div class="store-rating text-warning" style="font-size: 0.85rem;">
+                            <span class="fw-bold">@store.Rating</span> <i class="fas fa-star"></i>
+                            <span class="text-muted ms-1">(@store.ReviewCount reviews)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="store-action">
+                    <a href="@store.Url" target="_blank" class="btn btn-purple-action px-4 py-2 text-white" style="background-color: #5533ff; border-radius: 8px; font-weight: 500;">
+                        View Store <i class="fas fa-chevron-right ms-2" style="font-size: 0.7rem;"></i>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

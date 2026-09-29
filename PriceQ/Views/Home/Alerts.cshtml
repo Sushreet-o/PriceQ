@@ -1,0 +1,114 @@
+﻿@model IEnumerable<PriceQ.Models.PriceAlert>
+
+@{
+    ViewData["Title"] = "My Price Alerts - PriceQ Nepal";
+}
+
+<div class="container mt-5 alerts-page">
+    
+    <!-- HEADER: Matching picture with + Add Alert button -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div class="alerts-title-wrap">
+            <h1 class="fw-bold mb-1">Price Alerts</h1>
+            <p class="text-muted">Get notified when prices drop</p>
+        </div>
+        <button class="btn btn-primary btn-add-alert px-4 py-2" style="border-radius:10px; font-weight:600;">
+            <i class="fas fa-plus me-2"></i> Add Alert
+        </button>
+    </div>
+
+    <!-- TAB NAVIGATION: Matching active tab style in image_6.png -->
+    <ul class="nav nav-tabs alerts-tabs mb-4" id="alertsTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="active-tab" data-bs-toggle="tab" data-bs-target="#active" type="button" role="tab">
+                Active Alerts <span class="badge bg-purple-light ms-1">@Model.Count()</span>
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="triggered-tab" data-bs-toggle="tab" data-bs-target="#triggered" type="button" role="tab">
+                Triggered Alerts
+            </button>
+        </li>
+    </ul>
+
+    <!-- TAB CONTENT -->
+    <div class="tab-content" id="alertsTabContent">
+        
+        <!-- --- 1. ACTIVE ALERTS TAB (Current loop) --- -->
+        <div class="tab-pane fade show active" id="active" role="tabpanel">
+            
+            <div class="alerts-list">
+                @foreach (var alert in Model)
+                {
+                    <div class="alert-row-card d-flex align-items-center justify-content-between p-4 mb-3 bg-white shadow-sm" style="border-radius: 15px; border: 1px solid #f0f0f0;">
+                        
+                        <div class="d-flex align-items-center flex-grow-1">
+                            <!-- Product Image -->
+                            <div class="product-img-wrap me-4 text-center" style="width: 70px;">
+                                <img src="@alert.ProductImageUrl" alt="@alert.ProductName" style="max-height: 55px; max-width: 100%; object-fit: contain;">
+                            </div>
+                            
+                            <!-- Product and Store Info -->
+                            <div class="product-info me-5" style="width: 250px;">
+                                <h6 class="fw-semibold mb-1" style="font-size:15px; line-height:1.3;">@alert.ProductName</h6>
+                                <p class="text-muted mb-0" style="font-size: 13px;">@alert.StoreName</p>
+                            </div>
+                            
+                            <!-- Price Grid: Current vs Target -->
+                            <div class="price-grid d-flex flex-grow-1 text-end px-4">
+                                <div class="price-block current me-5">
+                                    <span class="price-label text-muted" style="font-size:12px;">Current Price:</span>
+                                    <br />
+                                    <span class="price-value fw-bold text-dark">@alert.CurrentPrice</span>
+                                </div>
+                                <div class="price-block target">
+                                    <span class="price-label text-muted" style="font-size:12px;">Target Price:</span>
+                                    <br />
+                                    <span class="price-value fw-bold text-primary">@alert.TargetPrice</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ACTIONS: The Toggle Switch and the Options Menu -->
+                        <div class="alert-actions d-flex align-items-center ms-4">
+                            <!-- Correct CSS Toggle Switch (Active = Purple) -->
+                            <div class="form-check form-switch me-3 mb-0">
+                                <input class="form-check-input alert-toggle-input" type="checkbox" role="switch" @(alert.IsActive ? "checked" : "") style="width: 40px; height: 20px; cursor: pointer;">
+                            </div>
+                            <!-- 3-dots Menu Icon -->
+                            <button class="btn btn-link p-0 text-muted" style="font-size:1.1rem; text-decoration:none;">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+            
+        </div>
+
+        <!-- --- 2. TRIGGERED ALERTS TAB (Future database phase) --- -->
+        <div class="tab-pane fade" id="triggered" role="tabpanel">
+            <div class="text-center py-5 text-muted">
+                <i class="fas fa-bell-slash fa-3x mb-3 opacity-50"></i>
+                <p>No triggered alerts yet. We will notify you here when prices drop!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- INFO BANNER: Exactly matching image_6.png (How Price Alerts Work?) -->
+    <div class="price-alerts-info-banner d-flex align-items-center p-4 mt-5 mb-5" style="border-radius:15px; background: #f8f4ff; border: 1px solid #e9ddff;">
+        <div class="info-icon-wrap me-4" style="color: #3e288e; font-size: 1.8rem;">
+            <i class="far fa-info-circle"></i> <!-- Info from photo -->
+        </div>
+        <div class="info-text-wrap flex-grow-1">
+            <h6 class="fw-bold mb-1" style="color: #3e288e; font-size:16px;">How Price Alerts Work?</h6>
+            <p class="mb-0 text-muted" style="font-size: 14px; line-height:1.5;">
+                We continuously monitor prices and notify you when the price drops to your target price or below.
+            </p>
+        </div>
+        <div class="bell-icon-wrap ms-4" style="color: #c9b4ff; font-size: 3rem; opacity: 0.6;">
+            <i class="far fa-bell"></i> <!-- Bell from photo -->
+        </div>
+    </div>
+
+</div>

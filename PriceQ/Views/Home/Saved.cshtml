@@ -1,0 +1,55 @@
+﻿@model IEnumerable<PriceQ.Models.Product>
+
+@{
+    ViewData["Title"] = "Saved Items - PriceQ";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="fw-bold mb-1">Saved Items</h1>
+            <p class="text-muted">You have @Model.Count() items in your wishlist</p>
+        </div>
+        <a asp-action="Deals" class="btn btn-outline-primary rounded-pill px-4">
+            Continue Shopping
+        </a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="text-center py-5">
+            <i class="far fa-heart fa-4x mb-3 text-muted opacity-25"></i>
+            <h3>Your wishlist is empty</h3>
+            <p class="text-muted">Save items to keep track of price drops!</p>
+        </div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm p-3" style="border-radius: 15px;">
+                        <div class="text-end">
+                            <!-- Filled heart icon because it is saved -->
+                            <i class="fas fa-heart text-danger" style="cursor: pointer;"></i>
+                        </div>
+                        
+                        <div class="text-center py-3">
+                            <img src="@item.ImageUrl" class="img-fluid" style="height: 120px; object-fit: contain;">
+                        </div>
+
+                        <div class="card-body p-0 mt-2">
+                            <h6 class="fw-bold mb-1">@item.Name</h6>
+                            <p class="text-muted small mb-2">@item.StoreName</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold" style="color: #5533ff;">@item.CurrentPrice</span>
+                                <button class="btn btn-sm btn-primary rounded-pill px-3">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

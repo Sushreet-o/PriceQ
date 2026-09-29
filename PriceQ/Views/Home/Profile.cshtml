@@ -1,0 +1,633 @@
+﻿@model PriceQ.Models.ProfileViewModel
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<style>
+
+    .profile-page {
+        background: #f7f5ff;
+        min-height: calc(100vh - 80px);
+        padding: 45px 20px 70px;
+    }
+
+    .profile-container {
+        max-width: 1050px;
+        margin: 0 auto;
+    }
+
+    /* =========================
+           PROFILE HEADER
+           ========================= */
+
+    .profile-top {
+        background: linear-gradient(135deg, #432486, #6437c7);
+        border-radius: 20px;
+        padding: 35px 40px;
+        color: white;
+        margin-bottom: 25px;
+        box-shadow: 0 12px 35px rgba(67, 36, 134, 0.16);
+    }
+
+    .profile-top-content {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+    }
+
+    .profile-avatar {
+        width: 82px;
+        height: 82px;
+        border-radius: 50%;
+        background: white;
+        color: #4b2e91;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .profile-top h1 {
+        margin: 0 0 7px;
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    .profile-top p {
+        margin: 0;
+        font-size: 15px;
+        opacity: 0.85;
+    }
+
+    /* =========================
+           MAIN CARD
+           ========================= */
+
+    .profile-card {
+        background: white;
+        border-radius: 18px;
+        padding: 35px;
+        margin-bottom: 25px;
+        box-shadow: 0 5px 22px rgba(0, 0, 0, 0.055);
+    }
+
+    .section-header {
+        margin-bottom: 28px;
+    }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 23px;
+            font-weight: 700;
+            color: #202020;
+        }
+
+        .section-header p {
+            margin: 7px 0 0;
+            color: #777;
+            font-size: 14px;
+        }
+
+    /* =========================
+           FORM
+           ========================= */
+
+    .form-label {
+        display: block;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    .form-control {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 13px 15px;
+        font-size: 15px;
+        min-height: 49px;
+    }
+
+        .form-control:focus {
+            border-color: #5b35b8;
+            box-shadow: 0 0 0 3px rgba(91, 53, 184, 0.10);
+        }
+
+    .email-box {
+        background: #f5f5f5;
+        color: #777;
+    }
+
+    .field-description {
+        display: block;
+        margin-top: 6px;
+        color: #888;
+        font-size: 12px;
+    }
+
+    /* =========================
+           BUTTON
+           ========================= */
+
+    .save-button {
+        background: #4b2e91;
+        border: none;
+        color: white;
+        padding: 13px 28px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 15px;
+        transition: 0.2s;
+    }
+
+        .save-button:hover {
+            background: #392270;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+    /* =========================
+           PASSWORD SECTION
+           ========================= */
+
+    .security-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 12px;
+        background: #f0ebff;
+        color: #4b2e91;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 21px;
+        margin-bottom: 15px;
+    }
+
+    .password-note {
+        background: #f8f7fc;
+        border: 1px solid #ece8f7;
+        border-radius: 10px;
+        padding: 13px 15px;
+        color: #666;
+        font-size: 13px;
+        margin-bottom: 25px;
+    }
+
+    /* =========================
+           ACCOUNT INFO
+           ========================= */
+
+    .account-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .account-info-item {
+        background: #f8f7fc;
+        border-radius: 12px;
+        padding: 18px;
+    }
+
+    .account-info-label {
+        display: block;
+        font-size: 12px;
+        color: #888;
+        margin-bottom: 5px;
+    }
+
+    .account-info-value {
+        font-weight: 600;
+        color: #333;
+        font-size: 14px;
+    }
+
+    /* =========================
+           SUCCESS MESSAGE
+           ========================= */
+
+    .success-message {
+        background: #eaf8ef;
+        color: #187a3d;
+        border: 1px solid #bde8ca;
+        border-radius: 10px;
+        padding: 13px 16px;
+        margin-bottom: 25px;
+        font-size: 14px;
+    }
+
+    /* =========================
+           ERROR MESSAGE
+           ========================= */
+
+    .error-message {
+        background: #fff0f0;
+        color: #b42318;
+        border: 1px solid #f0caca;
+        border-radius: 10px;
+        padding: 13px 16px;
+        margin-bottom: 25px;
+        font-size: 14px;
+    }
+
+    .validation-message {
+        color: #dc3545;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    /* =========================
+           RESPONSIVE
+           ========================= */
+
+    @@media (max-width: 768px) {
+
+        .profile-page {
+            padding: 25px 15px 50px;
+        }
+
+        .profile-top {
+            padding: 25px;
+        }
+
+        .profile-top-content {
+            gap: 15px;
+        }
+
+        .profile-top h1 {
+            font-size: 23px;
+        }
+
+        .profile-avatar {
+            width: 65px;
+            height: 65px;
+            font-size: 24px;
+        }
+
+        .profile-card {
+            padding: 25px;
+        }
+
+        .account-info {
+            grid-template-columns: 1fr;
+        }
+    }
+
+</style>
+
+
+<div class="profile-page">
+
+    <div class="profile-container">
+
+        <!-- ==========================================
+             PROFILE HEADER
+             ========================================== -->
+
+        <div class="profile-top">
+
+            <div class="profile-top-content">
+
+                <div class="profile-avatar">
+
+                    @{
+                        var firstInitial =
+                            !string.IsNullOrWhiteSpace(Model.FirstName)
+                                ? Model.FirstName.Substring(0, 1).ToUpper()
+                                : "U";
+                    }
+
+                    @firstInitial
+
+                </div>
+
+                <div>
+
+                    <h1>
+                        @(string.IsNullOrWhiteSpace(Model.FirstName)
+                            ? "My Profile"
+                            : Model.FirstName)
+                    </h1>
+
+                    <p>
+                        Manage your PriceQ account and personal information
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==========================================
+             SUCCESS MESSAGE
+             ========================================== -->
+        @if (TempData["ProfileSuccess"] != null)
+        {
+            <div class="success-message">
+                ✓ @TempData["ProfileSuccess"]
+            </div>
+        }
+
+
+        <!-- ==========================================
+             PERSONAL INFORMATION
+             ========================================== -->
+
+        <div class="profile-card">
+
+            <div class="section-header">
+
+                <h2>Personal Information</h2>
+
+                <p>
+                    Update your personal details associated with your PriceQ account.
+                </p>
+
+            </div>
+
+
+            <form asp-controller="Home"
+                  asp-action="Profile"
+                  method="post">
+
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly"
+                     class="error-message">
+                </div>
+
+
+                <div class="row">
+
+                    <!-- FIRST NAME -->
+
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="FirstName"
+                               class="form-label">
+                            First Name
+                        </label>
+
+                        <input asp-for="FirstName"
+                               class="form-control"
+                               placeholder="Enter your first name" />
+
+                        <span asp-validation-for="FirstName"
+                              class="validation-message">
+                        </span>
+
+                    </div>
+
+
+                    <!-- LAST NAME -->
+
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="LastName"
+                               class="form-label">
+                            Last Name
+                        </label>
+
+                        <input asp-for="LastName"
+                               class="form-control"
+                               placeholder="Enter your last name" />
+
+                        <span asp-validation-for="LastName"
+                              class="validation-message">
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="mb-4">
+
+                    <label asp-for="Email"
+                           class="form-label">
+                        Email Address
+                    </label>
+
+                    <input asp-for="Email"
+                           class="form-control email-box"
+                           readonly />
+
+                    <span class="field-description">
+                        Your email address is used to sign in to your PriceQ account.
+                    </span>
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="mb-4">
+
+                    <label asp-for="PhoneNumber"
+                           class="form-label">
+                        Phone Number
+                    </label>
+
+                    <input asp-for="PhoneNumber"
+                           class="form-control"
+                           placeholder="Enter your phone number" />
+
+                    <span asp-validation-for="PhoneNumber"
+                          class="validation-message">
+                    </span>
+
+                </div>
+
+
+                <button type="submit"
+                        class="save-button">
+
+                    Save Changes
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- ==========================================
+             SECURITY / PASSWORD
+             ========================================== -->
+
+        <div class="profile-card">
+
+            <div class="security-icon">
+                🔒
+            </div>
+
+            <div class="section-header">
+
+                <h2>Security</h2>
+
+                <p>
+                    Keep your PriceQ account secure by regularly updating your password.
+                </p>
+
+            </div>
+
+
+            <div class="password-note">
+
+                🔐 Your password should be at least 6 characters long.
+                Avoid using passwords that are easy to guess.
+
+            </div>
+
+
+            <form asp-controller="Home"
+                  asp-action="ChangePassword"
+                  method="post">
+
+                @Html.AntiForgeryToken()
+
+
+                <!-- CURRENT PASSWORD -->
+
+                <div class="mb-4">
+
+                    <label asp-for="CurrentPassword"
+                           class="form-label">
+                        Current Password
+                    </label>
+
+                    <input asp-for="CurrentPassword"
+                           type="password"
+                           class="form-control"
+                           placeholder="Enter your current password" />
+
+                    <span asp-validation-for="CurrentPassword"
+                          class="validation-message">
+                    </span>
+
+                </div>
+
+
+                <!-- NEW PASSWORD -->
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="NewPassword"
+                               class="form-label">
+                            New Password
+                        </label>
+
+                        <input asp-for="NewPassword"
+                               type="password"
+                               class="form-control"
+                               placeholder="Enter new password" />
+
+                        <span asp-validation-for="NewPassword"
+                              class="validation-message">
+                        </span>
+
+                    </div>
+
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="ConfirmPassword"
+                               class="form-label">
+                            Confirm New Password
+                        </label>
+
+                        <input asp-for="ConfirmPassword"
+                               type="password"
+                               class="form-control"
+                               placeholder="Confirm new password" />
+
+                        <span asp-validation-for="ConfirmPassword"
+                              class="validation-message">
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button type="submit"
+                        class="save-button">
+
+                    Change Password
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- ==========================================
+             ACCOUNT INFORMATION
+             ========================================== -->
+
+        <div class="profile-card">
+
+            <div class="section-header">
+
+                <h2>Account Information</h2>
+
+                <p>
+                    Information about your PriceQ account.
+                </p>
+
+            </div>
+
+
+            <div class="account-info">
+
+                <div class="account-info-item">
+
+                    <span class="account-info-label">
+                        Account Email
+                    </span>
+
+                    <span class="account-info-value">
+                        @Model.Email
+                    </span>
+
+                </div>
+
+
+                <div class="account-info-item">
+
+                    <span class="account-info-label">
+                        Account Status
+                    </span>
+
+                    <span class="account-info-value">
+                        ✓ Active
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+}

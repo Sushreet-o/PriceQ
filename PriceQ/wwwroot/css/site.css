@@ -1,0 +1,2182 @@
+/* --- Global Styles --- */
+:root {
+    --primary-purple: #3e288e; /* The dark purple accent text/brand */
+    --body-bg-purple: #f8f4ff; /* The main light purple background */
+    --card-bg-white: #ffffff; /* The pure white background for sections/cards */
+    --text-primary: #1a1a1a;
+    --text-secondary: #555555;
+    --price-green: #28a745;
+    --best-price-bg: #e0f7fa;
+    --border-color: #eaeaea;
+}
+
+body {
+    background-color: #f6f2ff; /* This is a very light lavender/purple */
+    font-family: 'Poppins', sans-serif;
+    color: #1a1a1a;
+}
+
+/* Make sure the navbar stays white to contrast the purple background */
+.navbar {
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+a {
+    color: var(--primary-purple);
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+.container {
+    max-width: 1300px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/* --- Helper Classes --- */
+.best-price-badge {
+    background-color: var(--best-price-bg);
+    color: var(--price-green);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* --- Section Title and View All --- */
+section h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    section h2 .view-all {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--primary-purple);
+    }
+
+/* --- Navbar (in _Layout.cshtml) --- */
+/* Make navigation links look professional */
+.navbar-nav .nav-link {
+    font-size: 14px;
+    font-weight: 500;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    color: #333 !important;
+}
+
+/* The "Saved" heart section */
+.fa-heart {
+    font-size: 18px;
+}
+
+/* The Sign Up button hover effect */
+.btn-dark:hover {
+    background-color: #3e288e !important; /* Changes to our brand purple on hover */
+    border-color: #3e288e !important;
+}
+
+/* Fix navbar height so it doesn't look cramped */
+.navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.auth-links {
+    gap: 15px;
+}
+
+    .auth-links .saved-link i {
+        font-size: 18px;
+        margin-right: 5px;
+    }
+
+    .auth-links .saved-link {
+        color: var(--text-primary);
+    }
+
+.btn-sign-up {
+    background-color: var(--text-primary); /* Dark grey sign up button */
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 6px;
+}
+
+/* --- Homepage Wrapper --- */
+.homepage-wrapper {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+/* --- Hero Section --- */
+.hero .text-section h1 {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--text-primary);
+}
+
+    .hero .text-section h1 span {
+        color: var(--primary-purple);
+    }
+
+.hero .text-section p {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-top: 20px;
+    max-width: 500px;
+}
+
+/* --- UPDATED SEARCH BAR & BUTTON (Centered Icon Fix) --- */
+.search-bar-wrapper {
+    display: flex;
+    align-items: center; /* Vertically centers the icon, input, and button */
+    max-width: 650px;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 8px 8px 8px 18px; /* Balanced padding */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+    /* This targets the FontAwesome icon specifically */
+    .search-bar-wrapper i {
+        margin-right: 12px;
+        color: #888;
+        display: flex;
+        align-items: center;
+        font-size: 1.1rem;
+    }
+
+    .search-bar-wrapper input {
+        flex-grow: 1;
+        border: none;
+        background: transparent;
+        font-size: 1rem;
+        height: 100%; /* Ensures input height matches container */
+    }
+
+        .search-bar-wrapper input:focus {
+            outline: none;
+        }
+
+    /* Search Button Styles - Keeping your colors but fixing alignment */
+    .search-bar-wrapper .search-btn {
+        background-color: var(--text-primary) !important;
+        color: #fff;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .search-bar-wrapper .search-btn:hover {
+            background-color: var(--priceq-purple) !important; /* Uses your brand purple on hover */
+        }
+
+.popular-searches {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.search-tag {
+    color: var(--text-secondary);
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-left: 8px;
+    display: inline-block;
+}
+
+    .search-tag:hover {
+        color: var(--primary-purple);
+        background-color: var(--body-bg-purple);
+        border-color: var(--primary-purple);
+        text-decoration: none;
+    }
+
+/* Featured Product Card */
+.featured-card {
+    background-color: #fff; /* Still White */
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+}
+
+    .featured-card .product-image {
+        max-width: 250px;
+        object-fit: contain;
+    }
+
+    .featured-card .card-details {
+        text-align: left;
+    }
+
+    .featured-card h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    .featured-card p.category {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin: 0;
+    }
+
+    .featured-card .from-price strong {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .featured-card .heart-icon {
+        font-size: 20px;
+        color: #aaa;
+        cursor: pointer;
+    }
+
+        .featured-card .heart-icon:hover {
+            color: red;
+        }
+/* Optional interaction */
+
+/* --- Categories --- */
+/* This makes the 8 cards sit side-by-side in a row */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* Creates 8 equal columns */
+    gap: 15px; /* Space between the cards */
+}
+
+.category-card {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 20px 10px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+    /* When you hover over a card, it highlights purple */
+    .category-card:hover {
+        border-color: #3e288e;
+        background-color: #f8f4ff;
+        text-decoration: none;
+    }
+
+.icon-box {
+    font-size: 24px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.category-card:hover .icon-box {
+    color: #3e288e;
+}
+
+.category-card span {
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+}
+
+/* --- Top Deals Today --- */
+.deal-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+}
+
+.deal-product-image {
+    max-width: 100px;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+}
+
+.deal-details h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.deal-details p.from-price strong {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.deal-details .seller-logo {
+    max-height: 20px;
+    max-width: 60px;
+    object-fit: contain;
+}
+
+.deal-details .seller-name {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* --- Trust Banner --- */
+.trust-banner {
+    background-color: #fff;
+    border-top: 1px solid var(--border-color);
+}
+
+    .trust-banner .trust-text {
+        color: var(--text-secondary);
+        font-size: 14px;
+    }
+
+    .trust-banner .trust-logo {
+        max-height: 25px;
+        filter: grayscale(100%); /* Optional: makes logos grey to be less distracting */
+        opacity: 0.7;
+    }
+
+    .trust-banner .more-link {
+        font-size: 14px;
+        color: var(--text-secondary);
+    }
+
+/* --- PRICEQ PURPLE THEME --- */
+
+:root {
+    --priceq-purple: #3e288e; /* The exact purple from your picture */
+}
+
+/* Change Blue Buttons to Purple */
+.btn-primary {
+    background-color: var(--priceq-purple) !important;
+    border-color: var(--priceq-purple) !important;
+}
+
+    .btn-primary:hover {
+        background-color: #2a1b6c !important; /* A darker purple for when you hover */
+        border-color: #2a1b6c !important;
+    }
+
+/* Change Blue Text to Purple */
+.text-primary, .purple-text {
+    color: var(--priceq-purple) !important;
+}
+
+/* Update the Search Button specifically */
+.search-btn {
+    background-color: #111 !important; /* Keep search black like the picture */
+    color: white;
+}
+
+/* The View All Deals button at the bottom */
+.btn-view-all {
+    background-color: var(--priceq-purple) !important;
+    color: white !important;
+}
+
+/* --- HERO IMAGE DESIGN (image_5.png) --- */
+
+/* The container that holds everything */
+.hero-design-container {
+    position: relative;
+    padding: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* The light blue blurred circle behind the card */
+.hero-circle-bg {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(188, 230, 255, 0.5) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    z-index: 1;
+    filter: blur(20px); /* Creates that soft glow look */
+}
+
+/* The dot pattern on the right */
+.hero-dots-bg {
+    position: absolute;
+    right: 40px;
+    bottom: 100px;
+    width: 100px;
+    height: 120px;
+    background-image: radial-gradient(#d1e9ff 2px, transparent 2px);
+    background-size: 15px 15px; /* Spacing between dots */
+    z-index: 2;
+}
+
+/* The actual white card */
+.featured-nike-card {
+    position: relative;
+    z-index: 10;
+    width: 340px;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+    .featured-nike-card .heart-btn {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        color: #a0aec0;
+        font-size: 1.2rem;
+    }
+
+    .featured-nike-card img {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+.best-price-pill {
+    background-color: #e6fffa;
+    color: #38b2ac;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* === REFINED "TOP DEALS" DESIGN (image_7.png) === */
+
+/* Section header styling from new picture */
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.section-subtitle {
+    font-size: 15px;
+    color: #6c757d;
+}
+
+/* The categories grid below the header */
+.deals-filter-grid {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    flex-wrap: nowrap; /* Forces them to stay on one row on desktop */
+}
+
+.filter-card {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: #333;
+    font-size: 13px;
+    font-weight: 500;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+    /* Specific styling for the 'active' (All) card from picture */
+    .filter-card.active {
+        background-color: #3e288e; /* Our main purple color from Phase 2 */
+        color: #ffffff;
+        border-color: #3e288e;
+    }
+
+        .filter-card.active .filter-icon {
+            color: #ffffff;
+        }
+
+    .filter-card:hover {
+        text-decoration: none;
+        border-color: #3e288e;
+    }
+
+.filter-icon {
+    font-size: 16px;
+    color: #888;
+    margin-right: 10px;
+}
+
+
+/* Refined Grid Details (for the precise 3x2 look) */
+.deal-card-refined .current-price {
+    color: #1a1a1a; /* Dark price on white card in image_7.png */
+}
+
+.deal-card-refined .previous-price {
+    font-size: 11px; /* Subtle strikethrough price */
+    color: #888;
+}
+
+/* Specific styling for the seller line from picture */
+.deal-card-refined .seller-line {
+    border-top: 1px solid #f0f0f0; /* Very faint line from picture */
+    padding-top: 15px;
+}
+
+/* Bottom "View All Deals" button styling */
+.btn-view-all:hover {
+    background-color: #3e288e !important; /* Change to brand purple on hover */
+    color: #ffffff !important;
+}
+
+.store-row-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .store-row-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
+    }
+
+.btn-purple-action:hover {
+    background-color: #4422ee !important;
+    color: white !important;
+}
+
+/* --- PHASE 4: PRICE ALERTS PAGE STYLING (image_6.png) --- */
+
+/* ROOT COLORS UPDATE */
+:root {
+    --primary-purple: #5533ff; /* Matching +Add button in photo */
+    --brand-purple: #3e288e; /* Matching PriceQ logo in photo */
+    --light-purple-bg: #f8f4ff; /* Matching info banner in photo */
+    --purple-border: #e9ddff; /* Matching info banner in photoThis is a great feature and essential for a "find the best price" website [cite: 1]! To add this page exactly as shown in your picture (image_6.png), we need to create a specialized **Model**, a new **Controller Action**, and a highly styled **View**.
+
+---
+
+### Step 1: Create the Alert Model
+
+We need a blueprint that defines what data an "Alert" holds, specifically the "Target Price" and whether the toggle switch is on or off.
+
+**Action:** Right-click the **Models** folder -> **Add** -> **Class**. Name it `PriceAlert.cs`. Paste this code:
+```csharp
+namespace PriceQ.Models
+{
+    public class PriceAlert
+    {
+        // Product Details
+        public string ProductName { get; set; }
+        public string ProductImageUrl { get; set; }
+        public string StoreName { get; set; }
+        
+        // Alert Pricing Data (from image_6.png)
+        public string CurrentPrice { get; set; }
+        public string TargetPrice { get; set; } // e.g., "Rs. 95,000"
+        
+        // Status: True = Purple Toggle ON, False = Grey Toggle OFF
+        public bool IsActive { get; set; } 
+    }
+}
+
+       /* --- COMPACT CATEGORY POPUP --- */
+
+    .category-popup {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%); /* Centers the popup under 'Category' */
+        background-color: #ffffff;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+        padding: 10px 15px;
+        border-radius: 8px;
+        white-space: nowrap; /* Keeps everything in one row */
+        border: 1px solid #eee;
+    }
+    /* Show on hover */
+    .dropdown-hover:hover .category-popup {
+        display: flex; /* Uses flex for the row */
+        gap: 20px; /* Controls the 'small distance' between items */
+        animation: fadeIn 0.2s ease;
+    }
+    /* Small Font Styling */
+    .cat-item {
+        color: #444;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.8rem; /* Smaller font */
+        transition: color 0.2s ease;
+    }
+
+        .cat-item:hover {
+            color: #5533ff; /* PriceQ Purple */
+        }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-5px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .deals-banner::after {
+        content: '';
+        position: absolute;
+        right: -50px;
+        top: -50px;
+        width: 200px;
+        height: 200px;
+        background: rgba(85, 51, 255, 0.05);
+        border-radius: 50%;
+    }
+
+    ```css
+    /* =========================================================
+   PRICEQ PROFESSIONAL REGISTER PAGE
+   ========================================================= */
+    .priceq-register-page
+
+{
+    min-height: calc(100vh - 70px);
+    background: #f7f7fb;
+    padding: 45px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.priceq-register-container {
+    width: 100%;
+    max-width: 1100px;
+    min-height: 680px;
+    background: #ffffff;
+    border-radius: 24px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 42% 58%;
+    box-shadow: 0 20px 60px rgba(40, 30, 90, 0.12);
+}
+
+
+/* =========================================================
+   LEFT BRAND SECTION
+   ========================================================= */
+
+.priceq-register-brand {
+    background: linear-gradient(145deg, #3e288e 0%, #5533ff 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+    .priceq-register-brand::before {
+        content: "";
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
+        top: -150px;
+        right: -150px;
+    }
+
+    .priceq-register-brand::after {
+        content: "";
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        bottom: -120px;
+        left: -120px;
+    }
+
+.priceq-brand-content {
+    height: 100%;
+    padding: 42px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+}
+
+.priceq-logo {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+}
+
+    .priceq-logo span {
+        color: #d8d0ff;
+    }
+
+.brand-main-content {
+    margin-top: 85px;
+}
+
+.brand-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.brand-main-content h1 {
+    font-size: 35px;
+    line-height: 1.15;
+    font-weight: 750;
+    letter-spacing: -1px;
+    margin-bottom: 18px;
+}
+
+.brand-main-content > p {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 360px;
+    margin-bottom: 35px;
+}
+
+.brand-features {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.brand-feature {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.feature-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+    .feature-icon i {
+        font-size: 17px;
+    }
+
+.brand-feature strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 650;
+    margin-bottom: 2px;
+}
+
+.brand-feature span {
+    display: block;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 12px;
+}
+
+.brand-footer {
+    margin-top: auto;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   RIGHT FORM SECTION
+   ========================================================= */
+
+.priceq-register-form-section {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 55px 65px;
+}
+
+.priceq-register-form-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.mobile-logo {
+    display: none;
+}
+
+.register-heading {
+    margin-bottom: 30px;
+}
+
+    .register-heading h2 {
+        color: #24212e;
+        font-size: 29px;
+        font-weight: 750;
+        letter-spacing: -0.7px;
+        margin-bottom: 8px;
+    }
+
+    .register-heading p {
+        color: #777482;
+        font-size: 14px;
+        margin: 0;
+    }
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.priceq-register-form {
+    width: 100%;
+}
+
+.name-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.priceq-form-group {
+    margin-bottom: 19px;
+}
+
+    .priceq-form-group label {
+        display: block;
+        color: #3b3845;
+        font-size: 13px;
+        font-weight: 650;
+        margin-bottom: 8px;
+    }
+
+.priceq-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+    .priceq-input-wrapper > i:first-child {
+        position: absolute;
+        left: 15px;
+        color: #96929f;
+        font-size: 16px;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+.priceq-input {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #dedce5;
+    border-radius: 11px;
+    background: #ffffff;
+    padding: 0 44px;
+    color: #282531;
+    font-size: 13px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+    .priceq-input::placeholder {
+        color: #aaa7b1;
+    }
+
+    .priceq-input:hover {
+        border-color: #c8c4d4;
+    }
+
+    .priceq-input:focus {
+        border-color: #5533ff;
+        box-shadow: 0 0 0 4px rgba(85, 51, 255, 0.09);
+    }
+
+.password-input {
+    padding-right: 52px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #77727f;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index: 5;
+    transition: all 0.2s ease;
+}
+
+    .password-toggle i {
+        font-size: 17px;
+        line-height: 1;
+    }
+
+    .password-toggle:hover {
+        background: #f1eff8;
+        color: #5533ff;
+    }
+
+    .password-toggle:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(85, 51, 255, 0.12);
+    }
+
+    .password-toggle:active {
+        transform: translateY(-50%) scale(0.94);
+    }
+
+/* =========================================================
+   VALIDATION
+   ========================================================= */
+
+.priceq-validation {
+    display: block;
+    color: #d9363e;
+    font-size: 11px;
+    margin-top: 6px;
+}
+
+.priceq-validation-summary {
+    color: #b42318;
+    background: #fff5f5;
+    border: 1px solid #ffd6d6;
+    border-radius: 10px;
+    padding: 11px 14px;
+    margin-bottom: 18px;
+    font-size: 12px;
+}
+
+    .priceq-validation-summary:empty {
+        display: none;
+    }
+
+
+/* =========================================================
+   TERMS
+   ========================================================= */
+
+.priceq-terms {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    color: #8a8791;
+    font-size: 11px;
+    line-height: 1.5;
+    margin: 5px 0 18px;
+}
+
+    .priceq-terms i {
+        color: #5533ff;
+        margin-top: 1px;
+    }
+
+
+/* =========================================================
+   REGISTER BUTTON
+   ========================================================= */
+
+.priceq-register-button {
+    width: 100%;
+    height: 52px;
+    border: none;
+    border-radius: 11px;
+    background: #5533ff;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 650;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+    box-shadow: 0 7px 18px rgba(85, 51, 255, 0.2);
+}
+
+    .priceq-register-button:hover {
+        background: #4422ee;
+        transform: translateY(-1px);
+        box-shadow: 0 10px 24px rgba(85, 51, 255, 0.27);
+    }
+
+    .priceq-register-button:active {
+        transform: translateY(0);
+    }
+
+    .priceq-register-button i {
+        font-size: 16px;
+        transition: transform 0.2s ease;
+    }
+
+    .priceq-register-button:hover i {
+        transform: translateX(3px);
+    }
+
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #898590;
+}
+
+    .login-link a {
+        color: #5533ff;
+        font-weight: 650;
+        text-decoration: none;
+        margin-left: 4px;
+    }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+
+/* =========================================================
+   EXTERNAL LOGIN
+   ========================================================= */
+
+.external-login-section {
+    margin-top: 25px;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #aaa6b1;
+    font-size: 11px;
+    margin-bottom: 16px;
+}
+
+    .divider::before,
+    .divider::after {
+        content: "";
+        height: 1px;
+        flex: 1;
+        background: #eceaf0;
+    }
+
+.external-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.external-login-button {
+    width: 100%;
+    height: 46px;
+    border: 1px solid #dedce5;
+    border-radius: 10px;
+    background: white;
+    color: #3e3a47;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    transition: 0.2s ease;
+}
+
+    .external-login-button:hover {
+        border-color: #c8c3d5;
+        background: #faf9fd;
+    }
+
+    .external-login-button i {
+        font-size: 15px;
+    }
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .priceq-register-container {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+
+    .priceq-register-brand {
+        display: none;
+    }
+
+    .priceq-register-form-section {
+        padding: 45px 35px;
+    }
+
+    .mobile-logo {
+        display: block;
+        text-align: center;
+        margin-bottom: 35px;
+    }
+
+        .mobile-logo .priceq-logo {
+            color: #3e288e;
+        }
+
+            .mobile-logo .priceq-logo span {
+                color: #5533ff;
+            }
+}
+
+
+@media (max-width: 600px) {
+
+    .priceq-register-page {
+        padding: 20px 12px;
+        min-height: calc(100vh - 60px);
+    }
+
+    .priceq-register-container {
+        border-radius: 18px;
+        min-height: auto;
+        box-shadow: 0 10px 35px rgba(40, 30, 90, 0.09);
+    }
+
+    .priceq-register-form-section {
+        padding: 35px 22px;
+    }
+
+    .name-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .register-heading h2 {
+        font-size: 25px;
+    }
+
+    .register-heading p {
+        font-size: 13px;
+    }
+
+    .priceq-input {
+        height: 48px;
+    }
+
+    .priceq-register-button {
+        height: 50px;
+    }
+}
+
+/* =========================================================
+   PRICEQ PROFESSIONAL LOGIN PAGE
+   ========================================================= */
+
+.priceq-login-page {
+    min-height: calc(100vh - 70px);
+    background: #f7f7fb;
+    padding: 45px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.priceq-login-container {
+    width: 100%;
+    max-width: 1100px;
+    min-height: 650px;
+    background: #ffffff;
+    border-radius: 24px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 42% 58%;
+    box-shadow: 0 20px 60px rgba(40, 30, 90, 0.12);
+}
+
+
+/* =========================================================
+   LEFT BRAND
+   ========================================================= */
+
+.priceq-login-brand {
+    background: linear-gradient(145deg, #3e288e 0%, #5533ff 100%);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+    .priceq-login-brand::before {
+        content: "";
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
+        top: -150px;
+        right: -150px;
+    }
+
+    .priceq-login-brand::after {
+        content: "";
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        bottom: -120px;
+        left: -120px;
+    }
+
+.priceq-login-brand-content {
+    height: 100%;
+    padding: 42px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+}
+
+.priceq-login-logo {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+}
+
+    .priceq-login-logo span {
+        color: #d8d0ff;
+    }
+
+
+/* =========================================================
+   LEFT CONTENT
+   ========================================================= */
+
+.login-brand-main {
+    margin-top: 85px;
+}
+
+.login-brand-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+    margin-bottom: 25px;
+}
+
+.login-brand-main h1 {
+    font-size: 35px;
+    line-height: 1.15;
+    font-weight: 750;
+    letter-spacing: -1px;
+    margin-bottom: 18px;
+}
+
+.login-brand-main > p {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 360px;
+    margin-bottom: 35px;
+}
+
+
+/* =========================================================
+   LEFT FEATURES
+   ========================================================= */
+
+.login-brand-features {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-brand-feature {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.login-feature-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+    .login-feature-icon i {
+        font-size: 16px;
+    }
+
+.login-brand-feature strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 650;
+    margin-bottom: 2px;
+}
+
+.login-brand-feature span {
+    display: block;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.login-brand-footer {
+    margin-top: auto;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   RIGHT FORM
+   ========================================================= */
+
+.priceq-login-form-section {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 55px 65px;
+}
+
+.priceq-login-form-container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.login-mobile-logo {
+    display: none;
+}
+
+.login-heading {
+    margin-bottom: 30px;
+}
+
+    .login-heading h2 {
+        color: #24212e;
+        font-size: 29px;
+        font-weight: 750;
+        letter-spacing: -0.7px;
+        margin-bottom: 8px;
+    }
+
+    .login-heading p {
+        color: #777482;
+        font-size: 14px;
+        margin: 0;
+    }
+
+
+/* =========================================================
+   VALIDATION
+   ========================================================= */
+
+.priceq-login-validation-summary {
+    color: #b42318;
+    background: #fff5f5;
+    border: 1px solid #ffd6d6;
+    border-radius: 10px;
+    padding: 11px 14px;
+    margin-bottom: 18px;
+    font-size: 12px;
+}
+
+    .priceq-login-validation-summary:empty {
+        display: none;
+    }
+
+.priceq-login-validation {
+    display: block;
+    color: #d9363e;
+    font-size: 11px;
+    margin-top: 6px;
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.priceq-login-form-group {
+    margin-bottom: 21px;
+}
+
+    .priceq-login-form-group label {
+        display: block;
+        color: #3b3845;
+        font-size: 13px;
+        font-weight: 650;
+        margin-bottom: 8px;
+    }
+
+
+/* =========================================================
+   PASSWORD LABEL
+   ========================================================= */
+
+.password-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+    .password-label-row label {
+        margin-bottom: 8px;
+    }
+
+    .password-label-row a {
+        color: #5533ff;
+        text-decoration: none;
+        font-size: 11px;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+        .password-label-row a:hover {
+            text-decoration: underline;
+        }
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.priceq-login-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+    .priceq-login-input-wrapper > i:first-child {
+        position: absolute;
+        left: 15px;
+        color: #96929f;
+        font-size: 15px;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+.priceq-login-input {
+    width: 100%;
+    height: 51px;
+    border: 1px solid #dedce5;
+    border-radius: 11px;
+    background: #ffffff;
+    padding: 0 16px 0 44px;
+    color: #282531;
+    font-size: 13px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+    .priceq-login-input::placeholder {
+        color: #aaa7b1;
+    }
+
+    .priceq-login-input:hover {
+        border-color: #c8c4d4;
+    }
+
+    .priceq-login-input:focus {
+        border-color: #5533ff;
+        box-shadow: 0 0 0 4px rgba(85, 51, 255, 0.09);
+    }
+
+.login-password-input {
+    padding-right: 52px;
+}
+
+
+/* =========================================================
+   PASSWORD EYE
+   ========================================================= */
+
+.login-password-toggle {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #77727f;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index: 5;
+    transition: all 0.2s ease;
+}
+
+    .login-password-toggle i {
+        font-size: 17px;
+    }
+
+    .login-password-toggle:hover {
+        background: #f1eff8;
+        color: #5533ff;
+    }
+
+    .login-password-toggle:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(85, 51, 255, 0.12);
+    }
+
+    .login-password-toggle:active {
+        transform: translateY(-50%) scale(0.94);
+    }
+
+
+/* =========================================================
+   REMEMBER ME
+   ========================================================= */
+
+.priceq-remember-row {
+    margin-top: -2px;
+    margin-bottom: 22px;
+}
+
+.priceq-remember-label {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 9px;
+    cursor: pointer;
+    color: #77727f !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    margin: 0 !important;
+}
+
+.priceq-remember-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.custom-checkbox {
+    width: 17px;
+    height: 17px;
+    border: 1.5px solid #d5d1dc;
+    border-radius: 5px;
+    background: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.priceq-remember-checkbox:checked + .custom-checkbox {
+    background: #5533ff;
+    border-color: #5533ff;
+}
+
+    .priceq-remember-checkbox:checked + .custom-checkbox::after {
+        content: "\f00c";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        color: #ffffff;
+        font-size: 9px;
+    }
+
+.priceq-remember-label:hover .custom-checkbox {
+    border-color: #5533ff;
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+   ========================================================= */
+
+.priceq-login-button {
+    width: 100%;
+    height: 52px;
+    border: none;
+    border-radius: 11px;
+    background: #5533ff;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 650;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+    box-shadow: 0 7px 18px rgba(85, 51, 255, 0.2);
+}
+
+    .priceq-login-button:hover {
+        background: #4422ee;
+        transform: translateY(-1px);
+        box-shadow: 0 10px 24px rgba(85, 51, 255, 0.27);
+    }
+
+    .priceq-login-button:active {
+        transform: translateY(0);
+    }
+
+    .priceq-login-button i {
+        font-size: 15px;
+        transition: transform 0.2s ease;
+    }
+
+    .priceq-login-button:hover i {
+        transform: translateX(3px);
+    }
+
+
+/* =========================================================
+   CREATE ACCOUNT
+   ========================================================= */
+
+.priceq-create-account {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #898590;
+}
+
+    .priceq-create-account a {
+        color: #5533ff;
+        font-weight: 650;
+        text-decoration: none;
+        margin-left: 4px;
+    }
+
+        .priceq-create-account a:hover {
+            text-decoration: underline;
+        }
+
+
+/* =========================================================
+   RESEND CONFIRMATION
+   ========================================================= */
+
+.priceq-resend-confirmation {
+    text-align: center;
+    margin-top: 13px;
+}
+
+    .priceq-resend-confirmation a {
+        color: #8c8894;
+        font-size: 11px;
+        text-decoration: none;
+    }
+
+        .priceq-resend-confirmation a:hover {
+            color: #5533ff;
+        }
+
+    .priceq-resend-confirmation i {
+        margin-right: 4px;
+    }
+
+
+/* =========================================================
+   EXTERNAL LOGIN
+   ========================================================= */
+
+.priceq-external-login {
+    margin-top: 25px;
+}
+
+.priceq-login-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #aaa6b1;
+    font-size: 11px;
+    margin-bottom: 16px;
+}
+
+    .priceq-login-divider::before,
+    .priceq-login-divider::after {
+        content: "";
+        height: 1px;
+        flex: 1;
+        background: #eceaf0;
+    }
+
+.priceq-external-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.priceq-external-button {
+    width: 100%;
+    height: 46px;
+    border: 1px solid #dedce5;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #3e3a47;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    transition: all 0.2s ease;
+}
+
+    .priceq-external-button:hover {
+        border-color: #c8c3d5;
+        background: #faf9fd;
+    }
+
+    .priceq-external-button i {
+        font-size: 15px;
+    }
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .priceq-login-container {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+
+    .priceq-login-brand {
+        display: none;
+    }
+
+    .priceq-login-form-section {
+        padding: 45px 35px;
+    }
+
+    .login-mobile-logo {
+        display: block;
+        text-align: center;
+        margin-bottom: 35px;
+    }
+
+        .login-mobile-logo .priceq-login-logo {
+            color: #3e288e;
+        }
+
+            .login-mobile-logo .priceq-login-logo span {
+                color: #5533ff;
+            }
+}
+
+
+@media (max-width: 600px) {
+
+    .priceq-login-page {
+        padding: 20px 12px;
+        min-height: calc(100vh - 60px);
+    }
+
+    .priceq-login-container {
+        border-radius: 18px;
+        min-height: auto;
+        box-shadow: 0 10px 35px rgba(40, 30, 90, 0.09);
+    }
+
+    .priceq-login-form-section {
+        padding: 35px 22px;
+    }
+
+    .login-heading h2 {
+        font-size: 25px;
+    }
+
+    .login-heading p {
+        font-size: 13px;
+    }
+
+    .priceq-login-input {
+        height: 48px;
+    }
+
+    .priceq-login-button {
+        height: 50px;
+    }
+}
+
+/* ============================================================
+   PRICEQ - PROFESSIONAL PROFILE PAGE
+   ============================================================ */
+
+.profile-page {
+    min-height: calc(100vh - 80px);
+    padding: 50px 20px 70px;
+    background: #f6f8fb;
+}
+
+.profile-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Profile Header */
+.profile-header {
+    background: linear-gradient(135deg, #111827, #1f2937);
+    border-radius: 18px;
+    padding: 35px 40px;
+    color: white;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.profile-header-content {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.profile-avatar {
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffffff, #e5e7eb);
+    color: #111827;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 700;
+    flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.profile-header h1 {
+    margin: 0 0 6px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+}
+
+.profile-header p {
+    margin: 0;
+    color: #d1d5db;
+    font-size: 15px;
+}
+
+/* Main Card */
+.profile-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 35px 40px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+}
+
+.profile-section {
+    margin-bottom: 35px;
+}
+
+    .profile-section:last-child {
+        margin-bottom: 0;
+    }
+
+.profile-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #edf0f3;
+}
+
+    .profile-section-title i {
+        font-size: 19px;
+        color: #2563eb;
+    }
+
+    .profile-section-title h2 {
+        margin: 0;
+        font-size: 19px;
+        font-weight: 700;
+        color: #111827;
+    }
+
+/* Form */
+.profile-form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.profile-form-control {
+    width: 100%;
+    min-height: 48px;
+    padding: 11px 14px;
+    border: 1px solid #d9dee7;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #111827;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+    .profile-form-control:hover {
+        border-color: #b9c2cf;
+    }
+
+    .profile-form-control:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+    }
+
+    .profile-form-control:disabled {
+        background: #f3f4f6;
+        color: #6b7280;
+        cursor: not-allowed;
+    }
+
+.profile-input-group {
+    margin-bottom: 20px;
+}
+
+.profile-input-help {
+    display: block;
+    margin-top: 7px;
+    color: #6b7280;
+    font-size: 12px;
+}
+
+/* Two-column form */
+.profile-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Save Button */
+.profile-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+    padding-top: 25px;
+    border-top: 1px solid #edf0f3;
+}
+
+.profile-save-btn {
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    background: #111827;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+    .profile-save-btn:hover {
+        background: #2563eb;
+        transform: translateY(-1px);
+        box-shadow: 0 5px 14px rgba(37, 99, 235, 0.20);
+    }
+
+    .profile-save-btn:active {
+        transform: translateY(0);
+    }
+
+/* Success Message */
+.profile-success {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    padding: 13px 16px;
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+    background: #f0fdf4;
+    color: #166534;
+    font-size: 14px;
+}
+
+    .profile-success i {
+        font-size: 18px;
+    }
+
+/* Validation / Error */
+.profile-error {
+    margin-top: 6px;
+    color: #dc2626;
+    font-size: 13px;
+}
+
+/* Account Information */
+.profile-info-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #f9fafb;
+    margin-bottom: 12px;
+}
+
+.profile-info-left {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.profile-info-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    background: #eff6ff;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-info-label {
+    margin: 0 0 2px;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.profile-info-value {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .profile-page {
+        padding: 30px 15px 50px;
+    }
+
+    .profile-header {
+        padding: 28px 24px;
+    }
+
+    .profile-header-content {
+        gap: 16px;
+    }
+
+    .profile-avatar {
+        width: 65px;
+        height: 65px;
+        font-size: 24px;
+    }
+
+    .profile-header h1 {
+        font-size: 23px;
+    }
+
+    .profile-card {
+        padding: 28px 22px;
+    }
+
+    .profile-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .profile-actions {
+        justify-content: stretch;
+    }
+
+    .profile-save-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .profile-header-content {
+        align-items: flex-start;
+    }
+
+    .profile-avatar {
+        width: 58px;
+        height: 58px;
+        font-size: 21px;
+    }
+
+    .profile-header h1 {
+        font-size: 20px;
+    }
+
+    .profile-header p {
+        font-size: 13px;
+    }
+
+    .profile-card {
+        padding: 24px 18px;
+    }
+}

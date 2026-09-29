@@ -1,0 +1,507 @@
+﻿@model PriceQ.Models.Product
+
+<div class="container mt-4">
+
+    <!-- BREADCRUMB -->
+    <nav aria-label="breadcrumb" class="mb-4">
+
+        <ol class="breadcrumb"
+            style="background:none;
+            font-size:0.85rem;">
+
+            <li class="breadcrumb-item">
+                <a asp-action="Index"
+                       class="text-decoration-none text-muted">
+                    Home
+                </a>
+            </li>
+
+            <li class="breadcrumb-item">
+                <a href="#"
+                       class="text-decoration-none text-muted">
+                    @Model.Category
+                </a>
+            </li>
+
+            <li class="breadcrumb-item active text-dark fw-bold"
+                aria-current="page">
+
+                @Model.Name
+
+            </li>
+
+        </ol>
+
+    </nav>
+
+
+    <div class="row g-4">
+
+
+        <!-- ===================================================== -->
+        <!-- LEFT SIDE -->
+        <!-- ===================================================== -->
+
+        <div class="col-lg-7">
+
+
+            <!-- PRODUCT IMAGE -->
+            <div class="row mb-4">
+
+                <div class="col-2">
+
+                    <div class="d-flex flex-column gap-2">
+
+                        @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+                        {
+                            <img src="@Model.ImageUrl"
+                                 class="img-thumbnail border-0 shadow-sm rounded-3 p-1"
+                                 style="height:75px;
+                            width:75px;
+                            object-fit:contain;"
+                                 onerror="this.style.display='none';" />
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-10">
+
+                    <div class="main-image-card bg-white shadow-sm rounded-4 p-4 text-center position-relative">
+
+                        <!-- HEART -->
+                        <button class="btn position-absolute top-0 end-0 m-3 border-0 bg-transparent">
+
+                            <i class="far fa-heart fs-4 text-muted"></i>
+
+                        </button>
+
+
+                        <!-- MAIN PRODUCT IMAGE -->
+                        @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+                        {
+                            <img src="@Model.ImageUrl"
+                                 class="img-fluid"
+                                 alt="@Model.Name"
+                                 style="max-height:400px;
+                            object-fit:contain;"
+                                 onerror="this.style.display='none';" />
+                        }
+                        else
+                        {
+                            <div class="d-flex align-items-center justify-content-center"
+                                 style="height:400px;">
+
+                                <span class="text-muted">
+                                    Product image unavailable
+                                </span>
+
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- PRODUCT INFORMATION -->
+            <!-- ================================================= -->
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+
+                <h5 class="fw-bold mb-3">
+                    Product Information
+                </h5>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <small class="text-muted d-block">
+                            Product
+                        </small>
+
+                        <strong>
+                            @Model.Name
+                        </strong>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <small class="text-muted d-block">
+                            Category
+                        </small>
+
+                        <strong>
+                            @Model.Category
+                        </strong>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <small class="text-muted d-block">
+                            Store
+                        </small>
+
+                        <strong>
+                            @Model.StoreName
+                        </strong>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <small class="text-muted d-block">
+                            Availability
+                        </small>
+
+                        <strong class="text-success">
+                            Available
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- BEST PRICE -->
+            <!-- ================================================= -->
+
+            <div class="alert bg-success bg-opacity-10 border-0 rounded-4 p-4 d-flex align-items-start gap-3">
+
+                <div class="rounded-circle bg-success bg-opacity-25 p-2">
+
+                    <i class="fas fa-check text-success"></i>
+
+                </div>
+
+                <div>
+
+                    <h6 class="fw-bold text-success mb-1">
+                        Best Price Recommendation
+                    </h6>
+
+                    <p class="text-dark small mb-0">
+                        PriceQ found this product from
+                        @Model.StoreName.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- RIGHT SIDE -->
+        <!-- ===================================================== -->
+
+        <div class="col-lg-5">
+
+
+            <!-- PRODUCT NAME -->
+            <h2 class="fw-bold mb-1">
+                @Model.Name
+            </h2>
+
+
+            <p class="text-muted mb-3">
+                @Model.Category
+            </p>
+
+
+            <!-- PRICE -->
+            <div class="d-flex align-items-center gap-3 mb-4">
+
+                <span class="fs-3 fw-bold">
+                    @Model.CurrentPrice
+                </span>
+
+                @if (!string.IsNullOrWhiteSpace(Model.PreviousPrice))
+                {
+                    <span class="text-muted text-decoration-line-through">
+                        @Model.PreviousPrice
+                    </span>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(Model.Discount))
+                {
+                    <span class="badge bg-danger rounded-pill">
+                        @Model.Discount
+                    </span>
+                }
+
+            </div>
+
+
+
+            <!-- ================================================= -->
+            <!-- COMPARE PRICES -->
+            <!-- ================================================= -->
+
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+
+                <div class="p-4 border-bottom">
+
+                    <h6 class="fw-bold mb-0">
+                        Compare Prices
+                    </h6>
+
+                </div>
+
+
+                <div class="p-4 d-flex flex-column gap-4">
+
+
+                    @if (Model.Offers != null &&
+                         Model.Offers.Any())
+                    {
+
+                        @foreach (var offer in Model.Offers
+                            .OrderBy(o => GetPriceNumber(o.Price)))
+                        {
+
+                            <div class="d-flex align-items-center justify-content-between">
+
+
+                                <!-- STORE -->
+                                <div class="d-flex align-items-center gap-3">
+
+                                    @if (!string.IsNullOrWhiteSpace(offer.StoreLogoUrl))
+                                    {
+                                        <img src="@offer.StoreLogoUrl"
+                                             height="24"
+                                             alt="@offer.StoreName"
+                                             style="width:auto;"
+                                             onerror="this.style.display='none';" />
+                                    }
+
+                                    <div>
+
+                                        <h6 class="mb-0 fw-bold">
+                                            @offer.StoreName
+                                        </h6>
+
+                                        @if (!string.IsNullOrWhiteSpace(offer.Availability))
+                                        {
+                                            <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-2 py-1"
+                                                  style="font-size:0.65rem;">
+
+                                                @offer.Availability
+
+                                            </span>
+                                        }
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- PRICE + DEAL -->
+                                <div class="text-end">
+
+                                    <h6 class="fw-bold mb-1">
+                                        @offer.Price
+                                    </h6>
+
+                                    @if (!string.IsNullOrWhiteSpace(offer.ProductUrl))
+                                    {
+                                        <a href="@offer.ProductUrl"
+                                               target="_blank"
+                                               rel="noopener noreferrer"
+                                               class="btn btn-primary rounded-pill btn-sm px-4 fw-bold">
+
+                                            View Deal
+
+                                        </a>
+                                    }
+
+                                </div>
+
+                            </div>
+
+                        }
+
+                    }
+                    else
+                    {
+
+                        <!-- FALLBACK IF THERE ARE NO OFFERS -->
+
+                        <div class="d-flex align-items-center justify-content-between">
+
+                            <div class="d-flex align-items-center gap-3">
+
+                                @if (!string.IsNullOrWhiteSpace(Model.StoreLogoUrl))
+                                {
+                                    <img src="@Model.StoreLogoUrl"
+                                         height="24"
+                                         alt="@Model.StoreName"
+                                         style="width:auto;" />
+                                }
+
+                                <div>
+
+                                    <h6 class="mb-0 fw-bold">
+                                        @Model.StoreName
+                                    </h6>
+
+                                    <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-2 py-1"
+                                          style="font-size:0.65rem;">
+
+                                        Available
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="text-end">
+
+                                <h6 class="fw-bold mb-1">
+                                    @Model.CurrentPrice
+                                </h6>
+
+                                @if (!string.IsNullOrWhiteSpace(Model.StoreUrl))
+                                {
+                                    <a href="@Model.StoreUrl"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           class="btn btn-primary rounded-pill btn-sm px-4 fw-bold">
+
+                                        View Deal
+
+                                    </a>
+                                }
+
+                            </div>
+
+                        </div>
+
+                    }
+
+                </div>
+
+            </div>
+
+
+            <!-- LIVE PRICE BUTTON -->
+            @if (!string.IsNullOrWhiteSpace(Model.StoreUrl))
+            {
+
+                <form asp-action="RefreshPrice"
+                      asp-controller="Home"
+                      method="post"
+                      class="mt-3">
+
+                    <input type="hidden"
+                           name="id"
+                           value="@Model.Id" />
+
+                    <button type="submit"
+                            class="btn btn-outline-primary w-100 rounded-pill py-2 fw-semibold">
+
+                        <i class="bi bi-arrow-clockwise"></i>
+
+                        Get Live Price
+
+                    </button>
+
+                </form>
+
+            }
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+@functions
+{
+    public decimal GetPriceNumber(string price)
+    {
+        if (string.IsNullOrWhiteSpace(price))
+            return decimal.MaxValue;
+
+        string cleaned =
+            new string(
+                price
+                    .Where(c =>
+                        char.IsDigit(c) ||
+                        c == '.')
+                    .ToArray());
+
+        if (decimal.TryParse(
+            cleaned,
+            out decimal result))
+        {
+            return result;
+        }
+
+        return decimal.MaxValue;
+    }
+}
+
+
+
+<style>
+
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        border: none !important;
+    }
+
+    .rounded-4 {
+        border-radius: 1.2rem !important;
+    }
+
+    .btn-primary {
+        background-color: #3e288e;
+        border-color: #3e288e;
+    }
+
+        .btn-primary:hover {
+            background-color: #2e1d6e;
+        }
+
+    .btn-outline-primary {
+        color: #3e288e;
+        border-color: #3e288e;
+    }
+
+        .btn-outline-primary:hover {
+            background-color: #3e288e;
+            border-color: #3e288e;
+            color: white;
+        }
+
+    .img-thumbnail:hover {
+        border-color: #3e288e !important;
+        cursor: pointer;
+        opacity: 1 !important;
+    }
+
+</style>
