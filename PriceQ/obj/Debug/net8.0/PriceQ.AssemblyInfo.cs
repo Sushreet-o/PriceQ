@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PriceQ")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e717cb19e6acd8c36a4bf06f73107965b75b0ac4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+92d8a0d272fe08964bc14f011fe8fb5e78c7bbe7")]
 [assembly: System.Reflection.AssemblyProductAttribute("PriceQ")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PriceQ")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

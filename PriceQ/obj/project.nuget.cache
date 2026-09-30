@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ysVgJdqBxns=",
+  "dgSpecHash": "ZvHShM3P5yk=",
   "success": true,
-  "projectFilePath": "D:\\PriceQ\\PriceQ\\PriceQ\\PriceQ\\PriceQ.csproj",
+  "projectFilePath": "D:\\PriceQ\\PriceQ\\PriceQ\\PriceQ.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sushr\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\sushr\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

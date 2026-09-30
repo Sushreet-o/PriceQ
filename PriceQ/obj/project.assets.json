@@ -8194,11 +8194,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PriceQ\\PriceQ\\PriceQ\\PriceQ\\PriceQ.csproj",
+      "projectUniqueName": "D:\\PriceQ\\PriceQ\\PriceQ\\PriceQ.csproj",
       "projectName": "PriceQ",
-      "projectPath": "D:\\PriceQ\\PriceQ\\PriceQ\\PriceQ\\PriceQ.csproj",
+      "projectPath": "D:\\PriceQ\\PriceQ\\PriceQ\\PriceQ.csproj",
       "packagesPath": "C:\\Users\\sushr\\.nuget\\packages\\",
-      "outputPath": "D:\\PriceQ\\PriceQ\\PriceQ\\PriceQ\\obj\\",
+      "outputPath": "D:\\PriceQ\\PriceQ\\PriceQ\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
